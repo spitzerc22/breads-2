@@ -6,7 +6,9 @@ const app = express()
 const breadsRouter = require('./controllers/breads_controller')
 
 //MIDDLEWARE
-app.use('/breads', breadsRouter)
+
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
 
 //ROUTES
 app.get('/', (req, res) => {
@@ -21,6 +23,8 @@ app.get('/research/:animal', (req, res) => {
     const animal = req.params.animal;
     res.send(`Researching ${animal}`)
 })
+
+app.use('/breads', breadsRouter)
 
 //LISTEN
 app.listen(process.env.PORT, () => {
