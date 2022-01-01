@@ -2,11 +2,11 @@ const React = require('react')
 const bread = require('../models/bread')
 const Default = require('./layout/Default')
 
-function Edit ({bread, index}) {
+function Edit ({bread}) {
     return (
         <Default>
             <h2>Add a new bread</h2>
-            <form method="POST" action={`/breads/${index}?_method=PUT`}>
+            <form action={`/breads/${bread.id}?_method=PUT`} method="POST" >
                 <label htmlFor="name">Name</label>
                 <input 
                     type="text" 
